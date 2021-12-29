@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>OpenRGB</title>
+		<link rel="shortcut icon" type="image" href="images/favicon.webp"/>
+		<meta charset="utf-8" />
+		<meta name="description" content="Resizing Addressable RGB Zones in OpenRGB." />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header" class="alt">
+                                <div class="logo"><a href="index.html"><img src="images/OpenRGB White.webp" height=75px/></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="https://gitlab.com/CalcProgrammer1/OpenRGB">GitLab</a></li>
+					<li><a href="releases.html">Releases</a></li>
+					<li><a href="https://discord.gg/AQwjJPY">Discord</a></li>
+					<li><a href="https://www.reddit.com/r/OpenRGB/">Reddit</a></li>
+					<li><a href="https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/Supported-Devices">Supported Devices</a></li>
+					<li><a href="https://help.openrgb.org">Troubleshooting</a></li>
+                    <li><a href="resize.html">Resizing Zones</a></li>
+					<li><a href="https://www.patreon.com/CalcProgrammer1">Patreon</a></li>
+				</ul>
+			</nav>
+
+		<!-- Divider -->
+		<section id="divider" class="wrapper style3">
+			<div class="inner">
+			</div>
+		</section>
+
+		<!-- Resizing -->
+		<section id="resizing" class="wrapper style2">
+			<div class="inner">
+				<header class="align-center">
+					<h2>Resizing Addressable RGB Zones in OpenRGB</h2>
+				</header>
+                <p>OpenRGB will need to know the number of lighiting elements connected to each header to properly display and control each one. It is also useful to size the elements even if useing the built in modes so a rainbow wave or bounch effect ends at the end of the lighting element.</p>
+                <header class="align-center">
+                    <h1>Note on RGB Hubs</h1>
+                </header>
+                <p>Most common RGB hubs, splitters or cables will just dupilcate the signal (putting all elements in parallel). When setting up the size of the elements, it will be ideal for all stings to be the same length so ARGB effects will wrap at the same time.</p>
+                <header class="align-center">
+                    <h1>Calculating Length of Chained Elements</h1>
+                </header>
+                <p>Some elements like fans and LED strips can be chained to together to create one long strip. To calcuate the length, add up the number of LEDs in each individual element. If using all elements of the same type, mutiply the number of LEDs per element by the number of elements in the chain.</p>
+
+                <header class="align-center">
+                    <h1>List of Common RGB Fan LED Counts</h1>
+                </header>
+
+                <table>
+                    <tr>
+                        <th>Vendor</th>
+                        <th>Fan</th>
+                        <th>LED Count</th>
+                        <th>Chain</th>
+                        <th>Connector</th>
+                    </tr>
+                    <tr>
+                        <td>Cooler Master</td>
+                        <td>MF120 Halo</td>
+                        <td>24</td>
+                        <td>Parallel</td>
+                        <td>ARGB 3-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Cooler Master</td>
+                        <td>MF140 Halo</td>
+                        <td>24</td>
+                        <td>Parallel</td>
+                        <td>ARGB 3-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Corsair</td>
+                        <td>LL120</td>
+                        <td>16</td>
+                        <td>Series</td>
+                        <td>Corsair (Molex SL)</td>
+                    </tr>
+                    <tr>
+                        <td>Corsair</td>
+                        <td>LL140</td>
+                        <td>16</td>
+                        <td>Series</td>
+                        <td>Corsair (Molex SL)</td>
+                    </tr>
+                    <tr>
+                        <td>Corsair</td>
+                        <td>ML120</td>
+                        <td>4</td>
+                        <td>Series</td>
+                        <td>Corsair (Molex SL)</td>
+                    </tr>
+                    <tr>
+                        <td>Corsair</td>
+                        <td>ML140</td>
+                        <td>4</td>
+                        <td>Series</td>
+                        <td>Corsair (Molex SL)</td>
+                    </tr>
+                    <tr>
+                        <td>Corsair</td>
+                        <td>QL120</td>
+                        <td>34</td>
+                        <td>Series</td>
+                        <td>Corsair (Molex SL)</td>
+                    </tr>
+                    <tr>
+                        <td>Corsair</td>
+                        <td>QL140</td>
+                        <td>34</td>
+                        <td>Series</td>
+                        <td>Corsair (Molex SL)</td>
+                    </tr>
+                    <tr>
+                        <td>Lian-Li</td>
+                        <td>Bora Digital</td>
+                        <td>12</td>
+                        <td>None</td>
+                        <td>JST SM</td>
+                    </tr>
+                    <tr>
+                        <td>Lian-Li</td>
+                        <td>UNI Fan SL120</td>
+                        <td>16</td>
+                        <td>Series</td>
+                        <td>UNI Fan (JST SM 3-Pin)</td>
+                    </tr>
+                    <tr>
+                        <td>Lian-Li</td>
+                        <td>UNI Fan SL140</td>
+                        <td>16</td>
+                        <td>Series</td>
+                        <td>UNI Fan (JST SM 3-Pin)</td>
+                    </tr>
+                    <tr>
+                        <td>Lian-Li</td>
+                        <td>UNI Fan AL120</td>
+                        <td>16?</td>
+                        <td>Series</td>
+                        <td>UNI Fan (JST SM 3-Pin)</td>
+                    </tr>
+                    <tr>
+                        <td>Lian-Li</td>
+                        <td>UNI Fan AL140</td>
+                        <td>16?</td>
+                        <td>Series</td>
+                        <td>UNI Fan (JST SM 3-Pin)</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Pure 12 ARGB</td>
+                        <td>9</td>
+                        <td>None</td>
+                        <td>ARGB 3-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Pure 14 ARGB</td>
+                        <td>9</td>
+                        <td>None</td>
+                        <td>ARGB 3-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Pure 20 ARGB</td>
+                        <td>9</td>
+                        <td>None</td>
+                        <td>ARGB 3-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Pure Plus 12</td>
+                        <td>9</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Pure Plus 14</td>
+                        <td>9</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Plus 12</td>
+                        <td>12</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Plus 14</td>
+                        <td>12</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Duo 12</td>
+                        <td>18</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Duo 14</td>
+                        <td>18</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Trio 12</td>
+                        <td>30</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Trio 14</td>
+                        <td>30</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Trio 20</td>
+                        <td>60</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Quad 12</td>
+                        <td>54</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Thermaltake</td>
+                        <td>Riing Quad 14</td>
+                        <td>54</td>
+                        <td>None</td>
+                        <td>Thermaltake 9-Pin</td>
+                    </tr>
+                </table>
+
+                <header class="align-center">
+                    <h1>List of Common LED Strip LED Counts</h1>
+                </header>
+
+                <table>
+                    <tr>
+                        <th>Vendor</th>
+                        <th>LED Strip</th>
+                        <th>LED Count</th>
+                        <th>Chain</th>
+                        <th>Connector</th>
+                    </tr>
+                    <tr>
+                        <td>Phanteks</td>
+                        <td>Neon M4 400mm</td>
+                        <td>28</td>
+                        <td>Series</td>
+                        <td>JST SM 3-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Phanteks</td>
+                        <td>Neon M5 550mm</td>
+                        <td>38</td>
+                        <td>Series</td>
+                        <td>JST SM 3-Pin</td>
+                    </tr>
+                    <tr>
+                        <td>Phanteks</td>
+                        <td>Neon M1 1000mm</td>
+                        <td>70</td>
+                        <td>Series</td>
+                        <td>JST SM 3-Pin</td>
+                    </tr>
+                </table>
+			</div>
+		</section>
+	
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://gitlab.com/CalcProgrammer1/OpenRGB" class="icon fa-gitlab"><span class="label">GitLab</span></a></li>
+						<li><a href="https://github.com/CalcProgrammer1/OpenRGB" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.reddit.com/r/OpenRGB" class="icon fa-reddit"><span class="label">Reddit</span></a></li>
+						<li><a href="https://www.youtube.com/c/CalcProgrammer1" class="icon fa-youtube"><span class="label">YouTube</span></a></li>
+						<li><a href="https://twitter.com/CalcProgrammer1" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					</ul>
+				</div>
+				<div>
+					<img src="https://visitor-badge.glitch.me/badge?page_id=org.openrgb.releases" alt="Visitors" />
+				</div>
+				<div class="copyright">
+					&#127279; OpenRGB, 2021
+				</div>
+				<div>
+					OpenRGB is licensed under the GNU General Public License version 2
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

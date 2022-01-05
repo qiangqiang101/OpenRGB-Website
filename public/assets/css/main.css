@@ -2890,7 +2890,7 @@
 
 		.wrapper.style2 {
 			background-color: #f2f2f2;
-			color: #a6a6a6;
+			color: #666666;
 		}
 
 			.wrapper.style2 input, .wrapper.style2 select, .wrapper.style2 textarea {
@@ -3022,7 +3022,7 @@
 
 			.wrapper.style2 input[type="checkbox"] + label,
 			.wrapper.style2 input[type="radio"] + label {
-				color: #a6a6a6;
+				color: #666666;
 			}
 
 				.wrapper.style2 input[type="checkbox"] + label:before,
@@ -3709,7 +3709,7 @@
 
 	#header {
 		background: rgba(0, 0, 0, 0.975);
-		color: #a6a6a6;
+		color: #666666;
 		cursor: default;
 		height: 4.5em;
 		left: 0;

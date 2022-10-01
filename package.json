@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "![Build Status](https://gitlab.com/pages/plain-html/badges/master/build.svg)",
   "scripts": {
-    "test": "parcel ./src/html/index.pug",
+    "test": "node ./createdevices.js && parcel ./src/html/index.pug",
     "build-local": "parcel build ./src/html/index.pug --public-url ./",
     "build-ci-only": "parcel build ./src/html/index.pug --public-url ./ --dist-dir public",
     "createdevices": "node ./createdevices.js"
@@ -27,8 +27,12 @@
   "homepage": "https://gitlab.com/CalcProgrammer1/OpenRGB-Website#readme",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@parcel/packager-raw-url": "^2.7.0",
+    "@parcel/packager-xml": "^2.7.0",
     "@parcel/transformer-pug": "^2.7.0",
     "@parcel/transformer-stylus": "^2.7.0",
+    "@parcel/transformer-webmanifest": "^2.7.0",
+    "@parcel/transformer-xml": "^2.7.0",
     "jquery": "^3.6.1",
     "jquery.scrollex": "^0.2.1",
     "marked": "^4.1.0",

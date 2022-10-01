@@ -2,53 +2,73 @@
 const fs = require("fs");
 const marked = require("marked");
 const pug = require('pug');
-const https = require("https");
+const unzipper = require("unzipper");
+const wget = require('wget-improved');
 
-// Declare Variables
-var cleanMD = ""
-var uncleanHTML = ""
-var cleanHTML = ""
-var uncleanMD = ""
-
-// Import Header
-const htmlHeader = pug.renderFile('./src/html/devicesheader.pug');
-
-// Download MD
-https.get("https://gitlab.com/OpenRGBDevelopers/OpenRGB-Wiki/-/raw/stable/Supported%20Devices/Supported%20Devices.md", (res) => {
-    res.on('data', function (chunk) {
-        uncleanMD += chunk
-    });
-    res.on('end', function () {
-        writeHTML();
-    });
+// Download ZIP
+let download = wget.download("https://gitlab.com/api/v4/projects/10582521/jobs/artifacts/master/download?job=Supported%20Devices", "./markdown.zip");
+download.on('error', function (err) {
+    console.log(err);
+});
+download.on('end', function (output) {
+    unZIP();
 });
 
-function writeHTML() {
-    // Setup Variables to Filter Links
-    const markdownLinkRegex = /\(.*\.md\)/g
-    const positionRegex = /\(#.*\)/g
+function unZIP() {
+    // Delete ./markdown if it exists already
+    if (!fs.existsSync("./markdown")) {
+        fs.mkdirSync("./markdown");
+    } else {
+        fs.rmSync("./markdown", { recursive: true, force: true });
+        fs.mkdirSync("./markdown");
+    }
 
-    // Clean Links
-    cleanMD = uncleanMD.replaceAll("[", "")
-    cleanMD = cleanMD.replaceAll("]", "")
-    cleanMD = cleanMD.replaceAll(markdownLinkRegex, "")
-    cleanMD = cleanMD.replaceAll(positionRegex, "")
+    // Delete ./src/html/devices if it exists already
+    if (!fs.existsSync("./src/html/devices")) {
+        fs.mkdirSync("./src/html/devices");
+    } else {
+        fs.rmSync("./src/html/devices", { recursive: true, force: true });
+        fs.mkdirSync("./src/html/devices");
+    }
 
-    // Compile MD Into HTML
-    uncleanHTML = marked.parse(cleanMD);
+    // UnZIP File
+    fs.createReadStream('./markdown.zip')
+        .pipe(unzipper.Extract({ path: './markdown' }))
+        .on("finish", () => {
+            // Just wait... Script was too good.
+            setTimeout(function () {
+                parseControllers();
+                parseMain();
+                fs.unlinkSync("./markdown.zip")
+            }, 1000)
+        })
+}
 
-    // Format Emoji to Unicode Variants
-    cleanHTML = uncleanHTML.replaceAll(":x:", "❌");
-    cleanHTML = cleanHTML.replaceAll(":robot:", "🤖");
-    cleanHTML = cleanHTML.replaceAll(":tools:", "⚒️");
-    cleanHTML = cleanHTML.replaceAll(":rotating_light:", "🚨");
-    cleanHTML = cleanHTML.replaceAll(":white_check_mark:", "✔️");
-    cleanHTML = cleanHTML.replaceAll(":o:", "🚫");
+function parseControllers() {
+    const controllerHeader = pug.renderFile('./src/html/controllerheader.pug');
+    // Read all files in ./markdown
+    fs.readdir("./markdown/", function (err, files) {
+        files.forEach(function (file) {
+            // Ignore Main File
+            if (file !== "Supported Devices.md") {
+                var md = fs.readFileSync("./markdown/" + file, "utf-8")
+                var filename = file.replace("md", "html")
+                var html = controllerHeader + marked.parse(md)
 
-    // Add Header to HTML
-    cleanHTML = htmlHeader + cleanHTML
+                // Write New HTML and Delete MD
+                fs.writeFileSync("./src/html/devices/" + filename, html)
+                fs.unlinkSync("./markdown/" + file)
+            }
+        });
+    });
+}
 
-    // Write HTML
-    fs.writeFileSync("./src/html/devicesInner.html", cleanHTML);
+function parseMain() {
+    const devicesHeader = pug.renderFile('./src/html/devicesheader.pug');
+    var uncleanHTML = marked.parse(fs.readFileSync("./markdown/Supported Devices.md", "utf-8"));
+    var cleanHTML = ""
+    cleanHTML = devicesHeader + uncleanHTML.replaceAll(".md", ".html")
+    fs.writeFileSync("./src/html/devices/devicesInner.html", cleanHTML);
+    fs.unlinkSync("./markdown/Supported Devices.md")
 }
 

@@ -5,7 +5,8 @@
   "scripts": {
     "test": "parcel ./src/html/index.pug",
     "build-local": "parcel build ./src/html/index.pug --public-url ./",
-    "build-ci-only": "parcel build ./src/html/index.pug --public-url ./ --dist-dir public"
+    "build-ci-only": "parcel build ./src/html/index.pug --public-url ./ --dist-dir public",
+    "createdevices": "node ./createdevices.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
     "jquery.scrollex": "^0.2.1",
     "marked": "^4.1.0",
     "parcel": "^2.7.0",
-    "skeljs": "^3.0.2"
+    "skeljs": "^3.0.2",
+    "unzipper": "^0.10.11",
+    "wget-improved": "^3.3.1"
   }
 }

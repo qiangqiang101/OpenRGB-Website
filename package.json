@@ -5,6 +5,7 @@
   "scripts": {
     "test": "node ./createdevices.js && parcel ./src/html/index.pug",
     "build": "node ./createdevices.js && parcel build ./src/html/index.pug --public-url / --dist-dir public",
+    "build-ci": "node ./createdevices.js && parcel build ./src/html/index.pug --public-url /",
     "createdevices": "node ./createdevices.js"
   },
   "repository": {

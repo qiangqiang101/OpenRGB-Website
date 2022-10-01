@@ -45,7 +45,7 @@ function unZIP() {
 }
 
 function parseControllers() {
-    const controllerHeader = pug.renderFile('./src/html/controllerheader.pug');
+    const controllerHeader = pug.renderFile('./src/headers/controllerheader.pug');
     // Read all files in ./markdown
     fs.readdir("./markdown/", function (err, files) {
         files.forEach(function (file) {
@@ -64,7 +64,7 @@ function parseControllers() {
 }
 
 function parseMain() {
-    const devicesHeader = pug.renderFile('./src/html/devicesheader.pug');
+    const devicesHeader = pug.renderFile('./src/headers/devicesheader.pug');
     var uncleanHTML = marked.parse(fs.readFileSync("./markdown/Supported Devices.md", "utf-8"));
     var cleanHTML = ""
     cleanHTML = devicesHeader + uncleanHTML.replaceAll(".md", ".html")

@@ -3,13 +3,10 @@ image: node:latest
 pages:
   stage: deploy
   script:
-  - rm -rf public
-  - mkdir public
   - npm i
-  - node createdevices.js
-  - npm run build-ci-only
+  - npm run build
   artifacts:
     paths:
-    - public
+    - dist
   only:
   - master

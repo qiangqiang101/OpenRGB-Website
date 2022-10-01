@@ -4,8 +4,7 @@
   "description": "![Build Status](https://gitlab.com/pages/plain-html/badges/master/build.svg)",
   "scripts": {
     "test": "node ./createdevices.js && parcel ./src/html/index.pug",
-    "build-local": "parcel build ./src/html/index.pug --public-url ./",
-    "build-ci-only": "parcel build ./src/html/index.pug --public-url ./ --dist-dir public",
+    "build": "node ./createdevices.js && parcel build ./src/html/index.pug --public-url /",
     "createdevices": "node ./createdevices.js"
   },
   "repository": {

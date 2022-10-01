@@ -11,7 +11,7 @@ var cleanHTML = ""
 var uncleanMD = ""
 
 // Import Header
-const htmlHeader = pug.renderFile('./src/html/devicesHeader.pug');
+const htmlHeader = pug.renderFile('./src/html/devicesheader.pug');
 
 // Download MD
 https.get("https://gitlab.com/OpenRGBDevelopers/OpenRGB-Wiki/-/raw/stable/Supported%20Devices/Supported%20Devices.md", (res) => {

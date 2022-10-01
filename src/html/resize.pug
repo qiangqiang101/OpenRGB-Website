@@ -1,0 +1,292 @@
+doctype html
+//
+  Hielo by TEMPLATED
+  templated.co @templatedco
+  Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+head
+  title OpenRGB
+  link(rel='shortcut icon' type='image' href='../../static/images/favicon.webp')
+  meta(charset='utf-8')
+  meta(name='description' content='Resizing Addressable RGB Zones in OpenRGB.')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='../css/main.css')
+  // Scripts
+  script(src='../../node_modules/jquery/dist/jquery.min.js')
+  script(src='../../node_modules/jquery.scrollex/jquery.scrollex.min.js')
+  script(src='../../node_modules/skeljs/dist/skel.min.js')
+  script(src='../js/util.js')
+  script(src='../js/main.js')
+// Header
+header#header.alt
+  .logo
+    a(href='index.pug')
+      img(src='../../static/images/OpenRGB White.webp' height='75px')
+  a(href='#menu') Menu
+// Nav
+nav#menu
+  ul.links
+    li
+      a(href='https://gitlab.com/CalcProgrammer1/OpenRGB') GitLab
+    li
+      a(href='releases.pug') Releases
+    li
+      a(href='plugins.pug') Plugins
+    li
+      a(href='https://discord.gg/AQwjJPY') Discord
+    li
+      a(href='https://www.reddit.com/r/OpenRGB/') Reddit
+    li
+      a(href='devices.pug') Supported Devices
+    li
+      a(href='https://help.openrgb.org') Troubleshooting
+    li
+      a(href='resize.pug') Resizing Zones
+    li
+      a(href='https://www.patreon.com/CalcProgrammer1') Patreon
+// Divider
+section#divider.wrapper.style3
+  .inner
+// Resizing
+section#resizing.wrapper.style2
+  .inner
+    header.align-center
+      h2 Resizing Addressable RGB Zones in OpenRGB
+    p
+      | OpenRGB will need to know the number of lighiting elements connected to each header to properly display
+      | and control each one. It is also useful to size the elements even if useing the built in modes so a
+      | rainbow wave or bounch effect ends at the end of the lighting element.
+    header.align-center
+      h1 Note on RGB Hubs
+    p
+      | Most common RGB hubs, splitters or cables will just dupilcate the signal (putting all elements in
+      | parallel). When setting up the size of the elements, it will be ideal for all stings to be the same
+      | length so ARGB effects will wrap at the same time.
+    header.align-center
+      h1 Calculating Length of Chained Elements
+    p
+      | Some elements like fans and LED strips can be chained to together to create one long strip. To calcuate
+      | the length, add up the number of LEDs in each individual element. If using all elements of the same
+      | type, mutiply the number of LEDs per element by the number of elements in the chain.
+    header.align-center
+      h1 List of Common RGB Fan LED Counts
+    table
+      tr
+        th Vendor
+        th Fan
+        th LED Count
+        th Chain
+        th Connector
+      tr
+        td Cooler Master
+        td MF120 Halo
+        td 24
+        td Parallel
+        td ARGB 3-Pin
+      tr
+        td Cooler Master
+        td MF140 Halo
+        td 24
+        td Parallel
+        td ARGB 3-Pin
+      tr
+        td Corsair
+        td LL120
+        td 16
+        td Series
+        td Corsair (Molex SL)
+      tr
+        td Corsair
+        td LL140
+        td 16
+        td Series
+        td Corsair (Molex SL)
+      tr
+        td Corsair
+        td ML120
+        td 4
+        td Series
+        td Corsair (Molex SL)
+      tr
+        td Corsair
+        td ML140
+        td 4
+        td Series
+        td Corsair (Molex SL)
+      tr
+        td Corsair
+        td QL120
+        td 34
+        td Series
+        td Corsair (Molex SL)
+      tr
+        td Corsair
+        td QL140
+        td 34
+        td Series
+        td Corsair (Molex SL)
+      tr
+        td Lian-Li
+        td Bora Digital
+        td 12
+        td None
+        td JST SM
+      tr
+        td Lian-Li
+        td UNI Fan SL120
+        td 16
+        td Series
+        td UNI Fan (JST SM 3-Pin)
+      tr
+        td Lian-Li
+        td UNI Fan SL140
+        td 16
+        td Series
+        td UNI Fan (JST SM 3-Pin)
+      tr
+        td Lian-Li
+        td UNI Fan AL120
+        td 16?
+        td Series
+        td UNI Fan (JST SM 3-Pin)
+      tr
+        td Lian-Li
+        td UNI Fan AL140
+        td 16?
+        td Series
+        td UNI Fan (JST SM 3-Pin)
+      tr
+        td Thermaltake
+        td Pure 12 ARGB
+        td 9
+        td None
+        td ARGB 3-Pin
+      tr
+        td Thermaltake
+        td Pure 14 ARGB
+        td 9
+        td None
+        td ARGB 3-Pin
+      tr
+        td Thermaltake
+        td Pure 20 ARGB
+        td 9
+        td None
+        td ARGB 3-Pin
+      tr
+        td Thermaltake
+        td Pure Plus 12
+        td 9
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Pure Plus 14
+        td 9
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Plus 12
+        td 12
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Plus 14
+        td 12
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Duo 12
+        td 18
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Duo 14
+        td 18
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Trio 12
+        td 30
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Trio 14
+        td 30
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Trio 20
+        td 60
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Quad 12
+        td 54
+        td None
+        td Thermaltake 9-Pin
+      tr
+        td Thermaltake
+        td Riing Quad 14
+        td 54
+        td None
+        td Thermaltake 9-Pin
+    header.align-center
+      h1 List of Common LED Strip LED Counts
+    table
+      tr
+        th Vendor
+        th LED Strip
+        th LED Count
+        th Chain
+        th Connector
+      tr
+        td Phanteks
+        td Neon M4 400mm
+        td 28
+        td Series
+        td JST SM 3-Pin
+      tr
+        td Phanteks
+        td Neon M5 550mm
+        td 38
+        td Series
+        td JST SM 3-Pin
+      tr
+        td Phanteks
+        td Neon M1 1000mm
+        td 70
+        td Series
+        td JST SM 3-Pin
+// Footer
+footer#footer
+  .container
+    ul.icons
+      li
+        a.icon.fa-gitlab(href='https://gitlab.com/CalcProgrammer1/OpenRGB')
+          span.label GitLab
+      li
+        a.icon.fa-github(href='https://github.com/CalcProgrammer1/OpenRGB')
+          span.label GitHub
+      li
+        a.icon.fa-reddit(href='https://www.reddit.com/r/OpenRGB')
+          span.label Reddit
+      li
+        a.icon.fa-youtube(href='https://www.youtube.com/c/CalcProgrammer1')
+          span.label YouTube
+      li
+        a.icon.fa-twitter(href='https://twitter.com/CalcProgrammer1')
+          span.label Twitter
+  div
+    img(src='https://visitor-badge.glitch.me/badge?page_id=org.openrgb.releases' alt='Visitors')
+  .copyright
+    | &copy; OpenRGB, 2022
+  div
+    | OpenRGB is licensed under the GNU General Public License version 2

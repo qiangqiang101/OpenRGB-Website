@@ -1,0 +1,78 @@
+doctype html
+//
+    Hielo by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+head
+    title OpenRGB
+    link(rel='shortcut icon' type='image' href='../../static/images/favicon.webp')
+    meta(charset='utf-8')
+    meta(name='description' content='Download released versions of OpenRGB.')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='../css/main.css')
+    // Scripts
+    script(src='../../node_modules/jquery/dist/jquery.min.js')
+    script(src='../../node_modules/jquery.scrollex/jquery.scrollex.min.js')
+    script(src='../../node_modules/skeljs/dist/skel.min.js')
+    script(src='../js/util.js')
+    script(src='../js/main.js')
+// Header
+header#header.alt
+    .logo
+        a(href='index.pug')
+            img(src='../../static/images/OpenRGB White.webp' height='75px')
+    a(href='#menu') Menu
+// Nav
+nav#menu
+    ul.links
+        li
+            a(href='https://gitlab.com/CalcProgrammer1/OpenRGB') GitLab
+        li
+            a(href='releases.pug') Releases
+        li
+            a(href='plugins.pug') Plugins
+        li
+            a(href='https://discord.gg/AQwjJPY') Discord
+        li
+            a(href='https://www.reddit.com/r/OpenRGB/') Reddit
+        li
+            a(href='devices.pug') Supported Devices
+        li
+            a(href='https://help.openrgb.org') Troubleshooting
+        li
+            a(href='resize.pug') Resizing Zones
+        li
+            a(href='https://www.patreon.com/CalcProgrammer1') Patreon
+// Divider
+section#divider.wrapper.style3
+    .inner
+// Downloads
+section#downloads.wrapper.style2
+    .inner
+        header.align-center
+            iframe(src="./devicesInner.html")
+// Footer
+footer#footer
+    .container
+        ul.icons
+            li
+                a.icon.fa-gitlab(href='https://gitlab.com/CalcProgrammer1/OpenRGB')
+                    span.label GitLab
+            li
+                a.icon.fa-github(href='https://github.com/CalcProgrammer1/OpenRGB')
+                    span.label GitHub
+            li
+                a.icon.fa-reddit(href='https://www.reddit.com/r/OpenRGB')
+                    span.label Reddit
+            li
+                a.icon.fa-youtube(href='https://www.youtube.com/c/CalcProgrammer1')
+                    span.label YouTube
+            li
+                a.icon.fa-twitter(href='https://twitter.com/CalcProgrammer1')
+                    span.label Twitter
+    div
+        img(src='https://visitor-badge.glitch.me/badge?page_id=org.openrgb.../../static/releases' alt='Visitors')
+    .copyright
+        | &copy; OpenRGB, 2022
+    div
+        | OpenRGB is licensed under the GNU General Public License version 2

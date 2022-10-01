@@ -1,9 +1,13 @@
-image: alpine:latest
+image: node:latest
 
 pages:
   stage: deploy
   script:
-  - echo 'Nothing to do...'
+  - rm -rf public
+  - mkdir public
+  - npm i
+  - node createdevices.js
+  - npm run build-ci-only
   artifacts:
     paths:
     - public

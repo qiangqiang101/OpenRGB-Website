@@ -4,9 +4,9 @@ pages:
   stage: deploy
   script:
   - npm i
-  - npm run build
+  - npm run build-ci
   artifacts:
     paths:
-    - dist
+    - public
   only:
   - master

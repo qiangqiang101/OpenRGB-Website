@@ -1,6 +1,7 @@
 // Import Dependencies
 const fs = require("fs");
 const marked = require("marked");
+const { exit } = require("process");
 const pug = require('pug');
 const unzipper = require("unzipper");
 const wget = require('wget-improved');
@@ -37,38 +38,43 @@ function unZIP() {
         .on("finish", () => {
             // Just wait... Script was too good.
             setTimeout(function () {
-                parseControllers();
-                parseMain();
-                fs.unlinkSync("./markdown.zip")
+                var parseControllers = new Promise(function (resolve, reject) {
+                    const controllerHeader = pug.renderFile('./src/headers/controllerheader.pug');
+                    // Read all files in ./markdown
+                    fs.readdir("./markdown/", function (err, files) {
+                        files.forEach(function (file) {
+                            // Ignore Main File
+                            if (file !== "Supported Devices.md") {
+                                var md = fs.readFileSync("./markdown/" + file, "utf-8")
+                                var filename = file.replace("md", "html")
+                                var html = controllerHeader + marked.parse(md)
+
+                                // Write New HTML and Delete MD
+                                fs.writeFileSync("./src/html/devices/" + filename, html)
+                                fs.unlinkSync("./markdown/" + file)
+                            }
+                        });
+                    });
+                    resolve();
+                });
+
+                var parseMain = new Promise(function (resolve, reject) {
+                    const devicesHeader = pug.renderFile('./src/headers/devicesheader.pug');
+                    var uncleanHTML = marked.parse(fs.readFileSync("./markdown/Supported Devices.md", "utf-8"));
+                    var cleanHTML = ""
+                    cleanHTML = devicesHeader + uncleanHTML.replaceAll(".md", ".html")
+                    fs.writeFileSync("./src/html/devices/devicesInner.html", cleanHTML);
+                    fs.unlinkSync("./markdown/Supported Devices.md")
+                    resolve();
+                });
+                Promise.all([parseControllers, parseMain]).then(function () {
+                    fs.unlinkSync("./markdown.zip")
+                    setTimeout(function () {
+                        console.log("Done!")
+                        process.exit(0);
+                    }, 1000);
+                });
             }, 1000)
         })
-}
-
-function parseControllers() {
-    const controllerHeader = pug.renderFile('./src/headers/controllerheader.pug');
-    // Read all files in ./markdown
-    fs.readdir("./markdown/", function (err, files) {
-        files.forEach(function (file) {
-            // Ignore Main File
-            if (file !== "Supported Devices.md") {
-                var md = fs.readFileSync("./markdown/" + file, "utf-8")
-                var filename = file.replace("md", "html")
-                var html = controllerHeader + marked.parse(md)
-
-                // Write New HTML and Delete MD
-                fs.writeFileSync("./src/html/devices/" + filename, html)
-                fs.unlinkSync("./markdown/" + file)
-            }
-        });
-    });
-}
-
-function parseMain() {
-    const devicesHeader = pug.renderFile('./src/headers/devicesheader.pug');
-    var uncleanHTML = marked.parse(fs.readFileSync("./markdown/Supported Devices.md", "utf-8"));
-    var cleanHTML = ""
-    cleanHTML = devicesHeader + uncleanHTML.replaceAll(".md", ".html")
-    fs.writeFileSync("./src/html/devices/devicesInner.html", cleanHTML);
-    fs.unlinkSync("./markdown/Supported Devices.md")
 }
 

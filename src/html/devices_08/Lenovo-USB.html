@@ -1,0 +1,62 @@
+<head> <title>OpenRGB Supported Devices</title><meta charset="utf-8"/><meta name="description" content="Open source RGB lighting control that doesn't depend on manufacturer software"/><!--OpenGraph Tags--><meta property="og:image" content="../../../static/favicon/og-image.jpg"/><meta property="og:image:width" content="211"/><meta property="og:image:height" content="211"/><meta property="og:description" content="Open source RGB lighting control that doesn't depend on manufacturer software"/><meta property="og:title" content="OpenRGB"/><meta property="og:url" content="https://openrgb.org"/><!-- Favicon--><link rel="apple-touch-icon" sizes="180x180" href="../../../static/favicon/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="../../../static/favicon/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="../../../static/favicon/favicon-16x16.png"/><link rel="manifest" href="../../../static/favicon/site.webmanifest"/><link rel="mask-icon" href="../../../static/favicon/safari-pinned-tab.svg" color="#00d084"/><link rel="shortcut icon" href="../../../static/favicon/favicon.ico"/><meta name="msapplication-TileColor" content="#00d084"/><meta name="msapplication-config" content="../../../static/favicon/browserconfig.xml"/><meta name="theme-color" content="#00d084"/><link rel="stylesheet" href="../../css/devices.styl"/><script src="../../../node_modules/jquery/dist/jquery.min.js"></script><script src="../../js/controller.js"></script></head><h1 id="lenovo-usb">Lenovo USB</h1>
+<p> Tested on Lenovo Legion 7/7i gen. 6 ANSI and ISO models
+Hardware modes are not implented
+PLEASE UPDATE YOUR BIOS IF YOU HAVE ISSUES WITH HARDWARE MODES AFTER CLOSING OPENRGB</p>
+<p>If you have other models beside the Legion 7 gen 6 and want to test if RGB can be added to OpenRGB,
+you can do so if you&#39;re on Windows by running
+<a href="https://gitlab.com/pvazny/legion7-rgb-ps">this Powershell script</a> with the <code>-test</code> parameter:</p>
+<pre><code class="language-powershell">legion7-rgb.ps1 -test -v 0x048D -p 0xC935 -up 0xFF89 -u 0x07 -c 0xa1 -start 0x15 -stop 0xa1
+</code></pre>
+<p>This script will iterate through each LED one by one, in bank <code>$c = 0xa1</code>, between IDs
+<code>-start 0x15</code> and <code>-stop 0xa1</code>, on the HID device with VID <code>-v 0x048D</code> PID <code>-p 0xC935</code> usage page
+<code>-up 0xFF89</code> and usage <code>-u 0x07</code>. It will default to the Legion 7 Gen 6 description, however you can
+enter a new description for each LED and at the end it will generate the differences.</p>
+<p>To check if you have an eligible HID device that could potentially be iterated by the script please
+open the powershell command prompt and executre the follow:</p>
+<pre><code class="language-powershell">Get-PnpDevice -Class &#39;HIDClass&#39; | ForEach-Object { [PSCustomObject]@{Name = $_.FriendlyName; InstanceId = $_.InstanceId; HardwareId = ($_.HardwareId | Where-Object {$_ -like &#39;HID_DEVICE_UP:*&#39; })}} | Where-Object { $_.HardwareId -ne $null } | Sort-Object InstanceId
+</code></pre>
+<p>If the script is successful please create a <a href="https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/new?issuable_template=New%20Device#">new device issue</a>
+and attach the relevant details to request support for your device.</p>
+<h2 id="connection-type">Connection Type</h2>
+<p> USB</p>
+<h2 id="saving">Saving</h2>
+<p> Not supported by controller</p>
+<h2 id="direct-mode">Direct Mode</h2>
+<p> Direct control is supported for Software Effects</p>
+<h2 id="hardware-effects">Hardware Effects</h2>
+<p> Hardware effects are not supported by controller</p>
+<h2 id="device-list">Device List</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Vendor ID</th>
+<th align="center">Product ID</th>
+<th align="left">Device Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>048D</code></td>
+<td align="center"><code>C935</code></td>
+<td align="left">Lenovo Legion Y740</td>
+</tr>
+<tr>
+<td align="center"><code>048D</code></td>
+<td align="center"><code>C956</code></td>
+<td align="left">Lenovo Legion 7 gen 5</td>
+</tr>
+<tr>
+<td align="center"><code>048D</code></td>
+<td align="center"><code>C957</code></td>
+<td align="left">Lenovo Legion 7S gen 5</td>
+</tr>
+<tr>
+<td align="center"><code>048D</code></td>
+<td align="center"><code>C968</code></td>
+<td align="left">Lenovo Legion 7 gen 6</td>
+</tr>
+<tr>
+<td align="center"><code>048D</code></td>
+<td align="center"><code>C967</code></td>
+<td align="left">Lenovo Legion 7S gen 6</td>
+</tr>
+</tbody></table>

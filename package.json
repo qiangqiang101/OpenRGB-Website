@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "![Build Status](https://gitlab.com/pages/plain-html/badges/master/build.svg)",
   "scripts": {
-    "test": "node ./createdevices.js && parcel ./src/html/index.pug",
+    "test": "parcel ./src/html/index.pug",
     "prepare": "npm i parcel-resolver-ignore -D",
-    "build-ci": "node ./createdevices.js && parcel build ./src/html/index.pug --public-url / --dist-dir public",
-    "build": "node ./createdevices.js && parcel build ./src/html/index.pug --public-url /",
-    "createdevices": "node ./createdevices.js"
+    "build-ci": "parcel build ./src/html/index.pug --public-url / --dist-dir public",
+    "build": "parcel build ./src/html/index.pug --public-url /",
+    "createdevices": ""
   },
   "repository": {
     "type": "git",

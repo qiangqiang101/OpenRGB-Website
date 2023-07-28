@@ -5,14 +5,13 @@ doctype html
     Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 head
     title OpenRGB - Supported devices
-    include includes/head.pug    
+    include includes/head.pug
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js')
     script(src='https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js')
     script(src='https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/7.7.0/d3.min.js')
-    script(src='https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js')
-    
+    script(src='https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js')    
     script(src='../js/devices_table.js')
 
     link(rel='stylesheet' href='https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css')
@@ -30,11 +29,12 @@ include includes/nav.pug
 section#divider.wrapper.style3
     .inner
 
-- var section_title = 'Supported devices (Latest experimental)'
+- var section_title = 'Supported devices (0.9)'
 include includes/devices_table.pug
+
 script.
   jQuery(function () {
-    var url = './data/supported_devices.csv'
+    var url = './data/supported_devices_0.9.csv'
 
     $.get(url).done(function (data) {
         var csv = d3.csvParseRows(data); //.replace(/\s*;\s*/g, ",")

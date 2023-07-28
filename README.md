@@ -2,7 +2,8 @@
 
 ## Based on the Hielo template by TEMPLATED
 
-### How to compile
+### How to run locally
 
-1. npm i
-2. npm run test
+```
+npm start
+```

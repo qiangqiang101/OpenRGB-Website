@@ -1,0 +1,57 @@
+section#devices-table.wrapper.style2
+  .inner
+    h1 !{section_title}
+    .row
+      .col-sm-12.mt-2
+        .card
+          .card-body
+            h2.text-center Legend
+            .form-group.row
+              .col-sm-2.mt-2
+                p.text-center.h1 &#x2714;&#xFE0F;
+                p.text-center Fully supported by OpenRGB
+              .col-sm-2.mt-2
+                p.text-center.h1 &#x1F6A8;
+                p.text-center
+                  | Support is problematic
+                  | See device page for details
+              .col-sm-2.mt-2
+                p.text-center.h1 &#x1F916;
+                p.text-center Feature is automatic and can not be turned off
+              .col-sm-2.mt-2
+                p.text-center.h1 &#x2692;&#xFE0F;
+                p.text-center
+                  | Partially supported by OpenRGB
+                  | See device page for details
+              .col-sm-2.mt-2
+                p.text-center.h1 &#x1F6AB;
+                p.text-center Not currently supported by OpenRGB
+              .col-sm-2.mt-2
+                p.text-center.h1 &#x274C;
+                p.text-center Not applicable for this device
+    .row
+      .col-sm-12.mt-2
+        .card
+          .card-body
+            .form-group.row
+              label.col-sm-1.col-form-label(for='cmbCategory') Device Type
+              .col-sm-2
+                select#cmbCategory.form-control.form-select.form-select-sm(name='cmbCategory')
+                  option(value='') Show All
+                  option(value='GPU') Graphics Cards
+                  option(value='Motherboard') Motherboards
+                  option(value='RAM') RAM Sticks
+                  option(value='Mouse') Mouses
+                  option(value='Keyboard') Keyboards
+                  option(value='Mousemat') Mousemats
+                  option(value='Cooler') Coolers
+                  option(value='LEDStrip') LED Strips
+                  option(value='Headset') Headsets &amp; Headset Stands
+                  option(value='Gamepad') Gamepads
+                  option(value='Accessory') Accessories
+                  option(value='Microphone') Microphones
+                  option(value='Speaker') Speakers
+                  option(value='Storage') Storages
+                  option(value='Case') Cases
+            #csvtable.table-responsive
+

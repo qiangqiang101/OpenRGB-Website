@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "![Build Status](https://gitlab.com/pages/plain-html/badges/master/build.svg)",
   "scripts": {
-    "test": "parcel ./src/html/index.pug",
+    "start": "parcel ./src/html/index.pug",
+    "prestart": "npm install",
     "prepare": "npm i parcel-resolver-ignore -D",
     "build-ci": "parcel build ./src/html/index.pug --public-url / --dist-dir public",
     "build": "parcel build ./src/html/index.pug --public-url /",
@@ -38,7 +39,8 @@
     "jquery.scrollex": "^0.2.1",
     "marked": "^4.2.3",
     "parcel": "^2.8.0",
-    "parcel-resolver-ignore": "^2.1.3",
+    "parcel-reporter-static-files-copy": "^1.5.0",
+    "parcel-resolver-ignore": "^2.1.5",
     "skeljs": "^3.0.2",
     "unzipper": "^0.10.11",
     "wget-improved": "^3.3.1"

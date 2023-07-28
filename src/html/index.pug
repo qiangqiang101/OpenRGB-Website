@@ -5,64 +5,14 @@ doctype html
   Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 head
   title OpenRGB
-  meta(charset='utf-8')
-  meta(name='description' content="Open source RGB lighting control that doesn't depend on manufacturer software")
-  meta(name='viewport' content='width=device-width, initial-scale=1')
-  link(rel='stylesheet' href='../css/main.css')
-  // Scripts
-  script(src='../../node_modules/jquery/dist/jquery.min.js')
-  script(src='../../node_modules/jquery.scrollex/jquery.scrollex.min.js')
-  script(src='../../node_modules/skeljs/dist/skel.min.js')
-  script(src='../js/util.js')
-  script(src='../js/main.js')
-  //OpenGraph Tags
-  meta(property='og:image' content='../../static/favicon/og-image.jpg')
-  meta(property='og:image:width' content='211')
-  meta(property='og:image:height' content='211')
-  meta(property='og:description' content="Open source RGB lighting control that doesn't depend on manufacturer software")
-  meta(property='og:title' content='OpenRGB')
-  meta(property='og:url' content='https://openrgb.org')
-
-  // Favicon
-  link(rel='apple-touch-icon' sizes='180x180' href='../../static/favicon/apple-touch-icon.png')
-  link(rel='icon' type='image/png' sizes='32x32' href='../../static/favicon/favicon-32x32.png')
-  link(rel='icon' type='image/png' sizes='16x16' href='../../static/favicon/favicon-16x16.png')
-  link(rel='manifest' href='../../static/favicon/site.webmanifest')
-  link(rel='mask-icon' href='../../static/favicon/safari-pinned-tab.svg' color='#00d084')
-  link(rel='shortcut icon' href='../../static/favicon/favicon.ico')
-  meta(name='msapplication-TileColor' content='#00d084')
-  meta(name='msapplication-config' content='../../static/favicon/browserconfig.xml')
-  meta(name='theme-color' content='#00d084')
+  include includes/head.pug
 
 // Header
-header#header.alt
-  .logo
-    a(href='index.pug')
-      img(src='../../static/images/OpenRGB White.webp')
-  a(href='#menu') Menu
+include includes/header.pug
+  
 // Nav
-nav#menu
-  ul.links
-    li
-      a(href='https://gitlab.com/CalcProgrammer1/OpenRGB') GitLab
-    li
-      a(href='releases.pug') Releases
-    li
-      a(href='plugins.pug') Plugins
-    li
-      a(href='https://discord.gg/AQwjJPY') Discord
-    li
-      a(href='https://lemmy.ml/c/OpenRGB/') Lemmy
-    li
-      a(href='devices_08.pug') Supported Devices
-    li
-      a(href='https://help.openrgb.org') Troubleshooting
-    li
-      a(href='resize.pug') Resizing Zones
-    li
-      a(href='udev.pug') Udev Rules
-    li
-      a(href='https://www.patreon.com/CalcProgrammer1') Patreon
+include includes/nav.pug
+
 // Banner
 section.banner.half
   article
@@ -202,47 +152,56 @@ section#downloads.wrapper.style2
         | &#x9;&#x9;&#x9;&#x9;&#x9;use Debian Bullseye .deb
         br
         br
-        a(href='devices_08.pug') Supported Devices for Version 0.8
+        a(href='devices_0.9.pug') Supported Devices for Version 0.9
     header.align-center
       a(href='/releases/release_0.9/OpenRGB_0.9_Windows_64_b5f46e3.zip')
         | Windows (64-bit)
       | 
+      span - 
       a(href='/releases/release_0.9/OpenRGB_0.9_Windows_32_b5f46e3.zip')
         | Windows (32-bit)
+      br
       br
       a(href='/releases/release_0.9/OpenRGB_0.9_x86_64_b5f46e3.AppImage')
         | Linux (64-bit AppImage)
       | 
+      span - 
       a(href='/releases/release_0.9/OpenRGB_0.9_i386_b5f46e3.AppImage')
         | Linux (32-bit AppImage)
       br
       a(href='/releases/release_0.9/openrgb_0.9_amd64_buster_b5f46e3.deb')
         | Linux (Debian Buster 64-bit .deb)
       | 
+      span - 
       a(href='/releases/release_0.9/openrgb_0.9_i386_buster_b5f46e3.deb')
         | Linux (Debian Buster 32-bit .deb)
       br
       a(href='/releases/release_0.9/openrgb_0.9_amd64_bullseye_b5f46e3.deb')
         | Linux (Debian Bullseye 64-bit .deb)
       | 
+      span - 
       a(href='/releases/release_0.9/openrgb_0.9_i386_bullseye_b5f46e3.deb')
         | Linux (Debian Bullseye 32-bit .deb)
       br
       a(href='/releases/release_0.9/openrgb_0.9_amd64_bookworm_b5f46e3.deb')
         | Linux (Debian Bookworm 64-bit .deb)
       | 
+      span - 
       a(href='/releases/release_0.9/openrgb_0.9_i386_bookworm_b5f46e3.deb')
         | Linux (Debian Bookworm 32-bit .deb)
       br
       a(href='/releases/release_0.9/openrgb_0.9_x86_64_f35_b5f46e3.rpm')
         | Linux (Fedora 35 64-bit .rpm)
       | 
+      span - 
       a(href='/releases/release_0.9/openrgb_0.9_x86_64_f36_b5f46e3.rpm')
         | Linux (Fedora 36 64-bit .rpm)
+      br
       br
       a(href='/releases/release_0.9/OpenRGB_0.9_MacOS_ARM64_b5f46e3.zip')
         | MacOS (Apple Silicon ARM64)
       | 
+      span - 
       a(href='/releases/release_0.9/OpenRGB_0.9_MacOS_Intel_b5f46e3.zip')
         | MacOS (Intel)
     br
@@ -265,14 +224,17 @@ section#downloads.wrapper.style2
         | Windows
         | (64-bit)
       | 
+      span - 
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Windows 32')
         | Windows
         | (32-bit)
+      br 
       br
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Linux 64 AppImage')
         | Linux
         | (64-bit AppImage)
       | 
+      span - 
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Linux 32 AppImage')
         | Linux
         | (32-bit AppImage)
@@ -281,6 +243,7 @@ section#downloads.wrapper.style2
         | Linux
         | (Debian Buster 64-bit .deb)
       | 
+      span - 
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Linux 32 .deb (Debian Buster)')
         | Linux
         | (Debian Buster 32-bit .deb)
@@ -289,6 +252,7 @@ section#downloads.wrapper.style2
         | Linux
         | (Debian Bookworm 64-bit .deb)
       | 
+      span - 
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Linux+32+.deb+%28Debian+Bookworm%29')
         | Linux
         | (Debian Bookworm 32-bit .deb)
@@ -297,39 +261,20 @@ section#downloads.wrapper.style2
         | Linux
         | (Fedora 35 64-bit .rpm)
       | 
+      span - 
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Linux+64+f36+rpm')
         | Linux
         | (Fedora 36 64-bit .rpm)
+      br
       br
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=MacOS ARM64')
         | MacOS
         | (Apple Silicon ARM64)
       | 
+      span - 
       a(href='https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/download?job=MacOS Intel')
         | MacOS
         | (Intel)
+
 // Footer
-footer#footer
-  .container
-    ul.icons
-      li
-        a.icon.fa-gitlab(href='https://gitlab.com/CalcProgrammer1/OpenRGB')
-          span.label GitLab
-      li
-        a.icon.fa-github(href='https://github.com/CalcProgrammer1/OpenRGB')
-          span.label GitHub
-      li
-        a.icon.fa-reddit(href='https://www.reddit.com/r/OpenRGB')
-          span.label Reddit
-      li
-        a.icon.fa-youtube(href='https://www.youtube.com/c/CalcProgrammer1')
-          span.label YouTube
-      li
-        a.icon.fa-twitter(href='https://twitter.com/CalcProgrammer1')
-          span.label Twitter
-  div
-    img(src='https://visitor-badge.glitch.me/badge?page_id=org.openrgb.index' alt='Visitors')
-  .copyright
-    | &copy; OpenRGB, 2022
-  div
-    | OpenRGB is licensed under the GNU General Public License version 2
+include includes/footer.pug

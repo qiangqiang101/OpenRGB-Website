@@ -5,7 +5,8 @@ function tabulate(data) {
         .attr("id", "datatable")
         .attr("class", "table table-bordered table-hover dt-responsive nowrap")
         .attr("cellspacing", 0)
-        .attr("style", "width:100%;border-collapse:collapse;");
+        .attr("style", "width:100%;border-collapse:collapse;")
+        .attr("width", "100%");
     var thead = table.append("thead");
     var tbody = table.append("tbody");
 
@@ -35,6 +36,12 @@ function tabulate(data) {
             [20, 40, 60, 100, 150, 200, -1],
             [20, 40, 60, 100, 150, 200, "All"]
         ],
+        "drawCallback": function( settings ) {
+            //Force datatable to recalculate the column size when redraw, be sure it won't overflow
+            $('#datatable').DataTable()
+            .columns.adjust()
+            .responsive.recalc();
+        },
     });
 
     return table;
@@ -48,3 +55,6 @@ $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
     }
     return false;
 });
+
+//Fix the pagination on mobile devices
+$.fn.DataTable.ext.pager.numbers_length = screen.width <= 480? 5: 7;

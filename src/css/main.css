@@ -2139,8 +2139,7 @@
 
 	input[type="text"],
 	input[type="password"],
-	input[type="email"],
-	select {
+	input[type="email"] {
 		height: 2.75rem;
 	}
 
@@ -3013,9 +3012,11 @@
 				border-color: rgba(0, 0, 0, 0.15);
 			}*/
 
+			/* Added search type for datatable styling */
 				.wrapper.style2 input[type="text"]:focus,
 				.wrapper.style2 input[type="password"]:focus,
 				.wrapper.style2 input[type="email"]:focus,
+				.wrapper.style2 input[type="search"]:focus,
 				.wrapper.style2 select:focus,
 				.wrapper.style2 textarea:focus {
 					border-color: #0dce00;
@@ -4340,4 +4341,27 @@
 
 table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before, table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
     background-color: #0dce00 !important;
+}
+
+/* Styling for datatable category selection */
+
+.label-dt {
+    width: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0rem;
+	font-weight: 400;
+}
+
+#cmbCategory {
+	display:flex; 
+    flex-wrap:wrap;
+    justify-content: center;
+	width: auto!important;
+}
+
+/* Removed the spacing between the pagination buttons */
+
+.pagination li {
+	padding-left: 0!important;
 }

@@ -42,6 +42,7 @@ function tabulate(data) {
             .columns.adjust()
             .responsive.recalc();
         },
+        "columnDefs": [{ targets: [1], visible: false, searchable: true }],
     });
 
     return table;

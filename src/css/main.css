@@ -4365,3 +4365,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before, table
 .pagination li {
 	padding-left: 0!important;
 }
+
+/* Styling the pagination button to match with the input */
+
+a.page-link:focus,
+a.page-link:active {
+	border-color: #0dce00;
+	box-shadow: 0 0 0 1px #0dce00;
+}
